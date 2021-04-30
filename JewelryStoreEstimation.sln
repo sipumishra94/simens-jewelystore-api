@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JewelryStoreEstimation", "JewelryStoreEstimation\JewelryStoreEstimation.csproj", "{0383E3B7-49EE-4C56-ACD7-FC2BE2B7C40C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JewelryStoreEstimation.Test", "JewelryStoreEstimation.Test\JewelryStoreEstimation.Test.csproj", "{D4F5D7A6-D413-4AFF-853D-A3FBD19D44AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JewelryStoreEstimation.Test", "JewelryStoreEstimation.Test\JewelryStoreEstimation.Test.csproj", "{57A93CAC-54D3-4228-8323-7B6E31A0853E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{0383E3B7-49EE-4C56-ACD7-FC2BE2B7C40C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0383E3B7-49EE-4C56-ACD7-FC2BE2B7C40C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0383E3B7-49EE-4C56-ACD7-FC2BE2B7C40C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4F5D7A6-D413-4AFF-853D-A3FBD19D44AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4F5D7A6-D413-4AFF-853D-A3FBD19D44AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4F5D7A6-D413-4AFF-853D-A3FBD19D44AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4F5D7A6-D413-4AFF-853D-A3FBD19D44AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57A93CAC-54D3-4228-8323-7B6E31A0853E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57A93CAC-54D3-4228-8323-7B6E31A0853E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57A93CAC-54D3-4228-8323-7B6E31A0853E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57A93CAC-54D3-4228-8323-7B6E31A0853E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
