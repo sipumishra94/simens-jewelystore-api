@@ -61,7 +61,6 @@ namespace JewelryStoreEstimation
 
             app.UseCors(x => x.AllowAnyHeader()
                 .AllowAnyMethod()
-                .AllowCredentials()
                 .AllowAnyOrigin());
 
             app.UseAuthorization();
