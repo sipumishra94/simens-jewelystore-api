@@ -46,7 +46,6 @@ E:\Simens_Test\JewelryStoreApp\API\JewelryStoreEstimation\JewelryStoreEstimation
 E:\Simens_Test\JewelryStoreApp\API\JewelryStoreEstimation\JewelryStoreEstimation\bin\Debug\net5.0\runtimes\win-arm64\native\e_sqlite3.dll
 E:\Simens_Test\JewelryStoreApp\API\JewelryStoreEstimation\JewelryStoreEstimation\bin\Debug\net5.0\runtimes\win-x64\native\e_sqlite3.dll
 E:\Simens_Test\JewelryStoreApp\API\JewelryStoreEstimation\JewelryStoreEstimation\bin\Debug\net5.0\runtimes\win-x86\native\e_sqlite3.dll
-E:\Simens_Test\JewelryStoreApp\API\JewelryStoreEstimation\JewelryStoreEstimation\obj\Debug\net5.0\JewelryStoreEstimation.csprojAssemblyReference.cache
 E:\Simens_Test\JewelryStoreApp\API\JewelryStoreEstimation\JewelryStoreEstimation\obj\Debug\net5.0\JewelryStoreEstimation.GeneratedMSBuildEditorConfig.editorconfig
 E:\Simens_Test\JewelryStoreApp\API\JewelryStoreEstimation\JewelryStoreEstimation\obj\Debug\net5.0\JewelryStoreEstimation.AssemblyInfoInputs.cache
 E:\Simens_Test\JewelryStoreApp\API\JewelryStoreEstimation\JewelryStoreEstimation\obj\Debug\net5.0\JewelryStoreEstimation.AssemblyInfo.cs

@@ -3,6 +3,7 @@ using JewelryStoreEstimation.DTOs;
 using JewelryStoreEstimation.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -49,11 +50,10 @@ namespace JewelryStoreEstimation.Test
             //Arrange
 
             //Act
-            var result = _userController.Login(_validLoginDTO);
+            var result = _userController.Login(_validLoginDTO).Result;
 
             //Assert
-            Assert.IsType<OkObjectResult>(result);
-            Assert.Equal(_userDTO, result.Result);
+            Assert.Equal(JsonConvert.SerializeObject(_userDTO), JsonConvert.SerializeObject(result.Value));
         }
 
         [Fact]
@@ -62,11 +62,11 @@ namespace JewelryStoreEstimation.Test
             //Arrange
 
             //Act
-            var result = _userController.Login(_validLoginDTO);
+            var result = _userController.Login(_invalidLoginDTO).Result;
 
             //Assert
-            Assert.IsType<BadRequestResult>(result);
-            Assert.Null(result.Result);
+            Assert.IsType<NotFoundObjectResult>(result.Result);
+            Assert.Null(result.Value);
         }
 
         [Fact]
@@ -78,7 +78,6 @@ namespace JewelryStoreEstimation.Test
             var result = _userController.Discount();
 
             //Assert
-            Assert.IsType<OkObjectResult>(result);
             Assert.Equal(2, result);
         }
     }

@@ -1,12 +1,14 @@
 ﻿using API.Entities;
-using Castle.Core.Configuration;
 using JewelryStoreEstimation.Data;
 using JewelryStoreEstimation.DTOs;
 using JewelryStoreEstimation.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Moq;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using TestSupport.EfHelpers;
 using Xunit;
 
 namespace JewelryStoreEstimation.Test
@@ -15,7 +17,7 @@ namespace JewelryStoreEstimation.Test
     {
         private readonly UserDto _userDTO;
         private readonly AppUser _user;
-        private readonly UserRepository _userRepository;
+        private  UserRepository _userRepository;
         private readonly LoginDto _validLoginDTO;
         private readonly LoginDto _invalidLoginDTO;
 
@@ -35,29 +37,64 @@ namespace JewelryStoreEstimation.Test
                 UserRole = "General"
             };
 
-            var configMoq = new Mock<IConfiguration>();
-            var dataContextMoq = new Mock<DataContext>();
-            dataContextMoq.Setup(x => x.Users.SingleOrDefaultAsync(x => x.UserName == "Gobind" && x.Password == "Password", It.IsAny<System.Threading.CancellationToken>())).ReturnsAsync(_user);
-            configMoq.Setup(x => x.GetValue(typeof(Decimal), "Discount")).Returns(2);
+            _validLoginDTO = new LoginDto
+            {
+                UserName = "Gobind",
+                Password = "Password"
+            };
+            _invalidLoginDTO = new LoginDto
+            {
+                UserName = "Mishra",
+                Password = "Password"
+            };
         }
 
 
         [Fact]
         public void LogInAsync_ValidCredentialProvided_ReturnUserDTO()
         {
-            //Arrange
+
+            //SETUP
+            var options = SqliteInMemory.CreateOptions<DataContext>();
+            using var context = new DataContext(options);
+            context.Database.EnsureCreated();
+            context.Add(_user);
+            context.SaveChanges();
+
+            var inMemorySettings = new Dictionary<string, String> { { "Discount", "2" } };
+
+            IConfiguration configuration = new ConfigurationBuilder()
+                .AddInMemoryCollection(inMemorySettings)
+                .Build();
+
+            _userRepository = new UserRepository(context, configuration);
+
+
 
             //Act
-            var result = _userRepository.LogInAsync(_validLoginDTO);
+            var result = _userRepository.LogInAsync(_validLoginDTO).Result;
 
             //Assert
-            Assert.Equal(JsonConvert.SerializeObject(_userDTO), JsonConvert.SerializeObject(result.Result));
+            Assert.Equal(JsonConvert.SerializeObject(_userDTO), JsonConvert.SerializeObject(result));
         }
 
         [Fact]
         public void Login_InValidCredentialProvided_ReturnsNull()
         {
-            //Arrange
+            //SETUP
+            var options = SqliteInMemory.CreateOptions<DataContext>();
+            using var context = new DataContext(options);
+            context.Database.EnsureCreated();
+            context.Add(_user);
+            context.SaveChanges();
+
+            var inMemorySettings = new Dictionary<string, String> { { "Discount", "2" } };
+
+            IConfiguration configuration = new ConfigurationBuilder()
+                .AddInMemoryCollection(inMemorySettings)
+                .Build();
+
+            _userRepository = new UserRepository(context, configuration);
 
             //Act
             var result = _userRepository.LogInAsync(_invalidLoginDTO);
@@ -69,7 +106,20 @@ namespace JewelryStoreEstimation.Test
         [Fact]
         public void Discount_Called_ReturnDiscount()
         {
-            //Arrange
+            //SETUP
+            var options = SqliteInMemory.CreateOptions<DataContext>();
+            using var context = new DataContext(options);
+            context.Database.EnsureCreated();
+            context.Add(_user);
+            context.SaveChanges();
+
+            var inMemorySettings = new Dictionary<string, String> { { "Discount", "2" } };
+
+            IConfiguration configuration = new ConfigurationBuilder()
+                .AddInMemoryCollection(inMemorySettings)
+                .Build();
+
+            _userRepository = new UserRepository(context, configuration);
 
             //Act
             var result = _userRepository.GetDiscount();
